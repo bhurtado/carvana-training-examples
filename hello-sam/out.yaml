@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'FastAPI aws lambda example
+
+  '
+Resources:
+  FastapiExampleLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Events:
+        ApiEvent:
+          Properties:
+            RestApiId:
+              Ref: FastapiExampleGateway
+            Path: /{proxy+}
+            Method: ANY
+          Type: Api
+      FunctionName: hello-sam
+      CodeUri: s3://carvana-training-packages/5738a66f781b3ade66c70829a898d69f
+      Handler: app.handler
+      Runtime: python3.8
+      Timeout: 300
+      MemorySize: 128
+      Description: FastAPI aws lambda example
+      Role:
+        Fn::Sub: arn:aws:iam::${AWS::AccountId}:role/fastapilambdarole
+    Metadata:
+      SamResourceId: FastapiExampleLambda
+  FastapiExampleGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      OpenApiVersion: 3.0.0
+    Metadata:
+      SamResourceId: FastapiExampleGateway
