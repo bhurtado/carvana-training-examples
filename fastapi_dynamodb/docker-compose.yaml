@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    ports:
+      - "6969:6969"
+    environment:
+      PORT: 6969
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: asdf
+      AWS_SECRET_ACCESS_KEY: 123asdf
