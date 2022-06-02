@@ -1,0 +1,11 @@
+version = 0.1
+[dev]
+[dev.deploy]
+[dev.deploy.parameters]
+stack_name = "fastapi-dynamodb-dev"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1grgpdxgovdy"
+s3_prefix = "fastapi-dynamodb-dev"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "Stage=\"dev\""
+image_repositories = []
